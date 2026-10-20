@@ -5,19 +5,12 @@ import QuoteForm from "./QuoteForm";
 export default function Hero() {
   return (
     <section className="relative flex min-h-[100svh] flex-col overflow-hidden bg-[#0b100d]">
-      {/* BACK LAYER — atmosphere + giant wordmark */}
+      {/* BACK LAYER — atmosphere */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,#18261c_0%,#0b100d_70%)]" />
-        <div className="absolute inset-0 flex items-center justify-center px-4">
-          <h1 className="text-center font-display font-black text-[#f4efe4] leading-[0.95] tracking-tight select-none text-[clamp(2.2rem,9vw,11rem)] [text-shadow:0_2px_60px_rgba(0,0,0,0.65)]">
-            Strong
-            <br />
-            Innovative
-          </h1>
-        </div>
       </div>
 
-      {/* FRONT LAYER — static brownstone masonry photo overlapping the wordmark */}
+      {/* FRONT LAYER — static brownstone masonry photo */}
       <div className="absolute inset-0 z-10 pointer-events-none">
         <img
           src={HERO_IMG}
@@ -25,11 +18,21 @@ export default function Hero() {
           draggable={false}
           className="h-full w-full object-cover"
           style={{
-            WebkitMaskImage: "linear-gradient(to bottom, transparent 34%, black 66%)",
-            maskImage: "linear-gradient(to bottom, transparent 34%, black 66%)",
+            WebkitMaskImage: "linear-gradient(to bottom, transparent 20%, black 50%)",
+            maskImage: "linear-gradient(to bottom, transparent 20%, black 50%)",
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-transparent" />
+      </div>
+
+      {/* WORDMARK — sits on top of the photo so both lines stay fully visible */}
+      <div className="pointer-events-none absolute inset-x-0 top-[11%] z-10 flex justify-center px-4 md:top-[13%]">
+        <h1 className="text-center font-display font-black text-[#f4efe4] leading-[0.95] tracking-tight select-none text-[clamp(2.6rem,9vw,10.5rem)] [text-shadow:0_4px_24px_rgba(0,0,0,0.85),0_2px_60px_rgba(0,0,0,0.65)]">
+          Strong
+          <br />
+          Innovative
+        </h1>
       </div>
 
       {/* CONTENT */}

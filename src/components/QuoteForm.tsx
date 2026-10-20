@@ -42,7 +42,7 @@ export default function QuoteForm() {
       style={{ animationDelay: "1.4s" }}
     >
       <h3 className="font-display text-2xl uppercase leading-none">Get a free quote</h3>
-      <p className="mt-1.5 text-sm text-charcoal/65">Tell us about the job. We reply within one business day.</p>
+      <p className="mt-1.5 text-sm text-charcoal/65">Tell us about the job.</p>
 
       <label className="mt-5 block">
         <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-charcoal/60">Name</span>
