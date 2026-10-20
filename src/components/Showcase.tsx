@@ -4,7 +4,27 @@ import { BEFORE_AFTER, DARK_BG, FULLBLEED_IMG, GLASS_CARDS, LIST_ROWS, OWNER_QUO
 /* ---------- Section 2: stacked headline + floating cards (like "Homes. Loans. Agents. Tours.") ---------- */
 export function Stacked() {
   const floats = ["floaty", "floaty-2", "floaty-3"];
-  const tilts = ["rotate-[1.5deg]", "rotate-[-1.2deg]", "rotate-[1deg]", "rotate-[-1.5deg]", "rotate-[1.2deg]", "rotate-[-1deg]"];
+  const tilts = ["md:rotate-[1.5deg]", "md:rotate-[-1.2deg]", "md:rotate-[1deg]", "md:rotate-[-1.5deg]", "md:rotate-[1.2deg]", "md:rotate-[-1deg]"];
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [active, setActive] = useState(0);
+  const count = SERVICE_CARDS.length;
+
+  const onScroll = () => {
+    const el = trackRef.current;
+    if (!el || el.clientWidth === 0) return;
+    const max = el.scrollWidth - el.clientWidth;
+    if (max <= 0) return;
+    setActive(Math.round((el.scrollLeft / max) * (count - 1)));
+  };
+
+  const goTo = (i: number) => {
+    const el = trackRef.current;
+    if (!el) return;
+    const child = el.children[i] as HTMLElement | undefined;
+    if (child) child.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+    setActive(i);
+  };
+
   return (
     <section id="services" className="relative overflow-hidden bg-ink py-12 md:py-32">
       <div className="mx-auto max-w-7xl px-6 md:px-12">
@@ -21,11 +41,15 @@ export function Stacked() {
           </p>
         </div>
 
-        <div className="mt-10 flex snap-x snap-mandatory gap-6 overflow-x-auto pb-4 md:mt-14 md:grid md:snap-none md:grid-cols-2 md:overflow-visible md:pb-0 lg:grid-cols-4">
+        <div
+          ref={trackRef}
+          onScroll={onScroll}
+          className="mt-10 flex snap-x snap-mandatory gap-6 overflow-x-auto pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:mt-14 md:grid md:snap-none md:grid-cols-2 md:overflow-visible md:pb-0 lg:grid-cols-4"
+        >
           {SERVICE_CARDS.map((c, i) => (
             <article
               key={c.title}
-              className={`reveal ${floats[i % 3]} ${tilts[i % 6]} min-w-[85%] snap-center overflow-hidden rounded-2xl bg-cream sm:min-w-[55%] md:min-w-0 shadow-[0_20px_60px_rgba(0,0,0,0.35)] transition-transform duration-500 hover:rotate-0`}
+              className={`reveal ${floats[i % 3]} ${tilts[i % 6]} min-w-full snap-center overflow-hidden rounded-2xl bg-cream md:min-w-0 shadow-[0_20px_60px_rgba(0,0,0,0.35)] transition-transform duration-500 md:hover:rotate-0`}
               style={{ transitionDelay: `${(i % 3) * 90}ms` }}
             >
               <div className="relative aspect-[16/10] overflow-hidden">
@@ -54,6 +78,26 @@ export function Stacked() {
                 </a>
               </div>
             </article>
+          ))}
+        </div>
+
+        {/* Mobile pagination — numbered, tap to jump (one card at a time) */}
+        <div className="mt-2 flex items-center justify-center gap-2 md:hidden">
+          {SERVICE_CARDS.map((c, i) => (
+            <button
+              key={c.title}
+              type="button"
+              onClick={() => goTo(i)}
+              aria-label={`Go to service ${i + 1}: ${c.title}`}
+              aria-current={active === i ? "true" : undefined}
+              className={`flex h-10 w-10 items-center justify-center rounded-full font-display text-sm transition-colors ${
+                active === i
+                  ? "bg-forest text-cream"
+                  : "bg-cream/15 text-cream/70 hover:bg-cream/25"
+              }`}
+            >
+              {i + 1}
+            </button>
           ))}
         </div>
       </div>

@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 export function StickyBadge() {
   return (
     <div
-      className="pointer-events-none fixed bottom-24 left-4 z-50 md:bottom-8 md:left-8"
+      className="pointer-events-none fixed bottom-24 left-4 z-50 hidden md:block md:bottom-8 md:left-8"
       aria-hidden="true"
     >
       <svg viewBox="0 0 64 64" className="badge-bob h-14 w-14 drop-shadow-lg md:h-16 md:w-16">

@@ -8,7 +8,7 @@ export default function Hero() {
       {/* BACK LAYER — atmosphere + giant wordmark */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,#18261c_0%,#0b100d_70%)]" />
-        <div className="absolute inset-0 flex items-center justify-center px-4">
+        <div className="absolute inset-0 flex items-start justify-center px-4 pt-[15vh] md:items-center md:pt-0">
           <h1 className="text-center font-display font-black text-[#f4efe4] leading-[0.95] tracking-tight select-none text-[clamp(2.2rem,9vw,11rem)] [text-shadow:0_2px_60px_rgba(0,0,0,0.65)]">
             Strong
             <br />
@@ -33,8 +33,8 @@ export default function Hero() {
       </div>
 
       {/* CONTENT */}
-      <div className="relative z-20 flex flex-1 flex-col justify-between px-6 md:px-12 pt-28 pb-10">
-        <div className="hero-fade flex justify-end" style={{ animationDelay: "0.9s" }}>
+      <div className="relative z-20 flex flex-1 flex-col justify-end px-6 pb-10 pt-[36vh] md:justify-between md:px-12 md:pt-28">
+        <div className="hero-fade hidden justify-end md:flex" style={{ animationDelay: "0.9s" }}>
           <p className="text-right text-[11px] md:text-xs font-bold tracking-[0.35em] text-white/95 leading-loose">
             BRICK
             <br />
