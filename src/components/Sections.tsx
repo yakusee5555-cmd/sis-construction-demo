@@ -51,7 +51,7 @@ export function Header() {
               </g>
             </svg>
             <span className="font-display text-lg uppercase tracking-wide text-charcoal">
-              S.I.S. Construction
+              Strong Innovative
             </span>
           </Link>
           <nav className="hidden items-center gap-7 lg:flex">

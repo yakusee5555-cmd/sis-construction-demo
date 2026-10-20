@@ -9,8 +9,10 @@ export default function Hero() {
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,#18261c_0%,#0b100d_70%)]" />
         <div className="absolute inset-0 flex items-center justify-center px-4">
-          <h1 className="font-display font-black text-[#f4efe4] leading-none tracking-tight select-none text-[clamp(2.2rem,9vw,12rem)] [text-shadow:0_2px_60px_rgba(0,0,0,0.65)]">
-            S.I.S.
+          <h1 className="text-center font-display font-black text-[#f4efe4] leading-[0.95] tracking-tight select-none text-[clamp(2.2rem,9vw,11rem)] [text-shadow:0_2px_60px_rgba(0,0,0,0.65)]">
+            Strong
+            <br />
+            Innovative
           </h1>
         </div>
       </div>
@@ -74,7 +76,7 @@ export default function Hero() {
                 href={BUSINESS.phoneHref}
                 className="btn-shine flex min-h-[48px] items-center justify-center rounded-full border border-white/60 px-8 py-4 text-center text-sm font-bold tracking-widest text-white hover:bg-white/10 transition-colors"
               >
-                {BUSINESS.phone}
+                CALL ME
               </a>
             </div>
           </div>

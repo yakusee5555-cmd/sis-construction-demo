@@ -175,7 +175,7 @@ export function FullBleed() {
       <div ref={bgRef} className="absolute inset-0 will-change-transform" style={{ transform: "scale(1.12)" }}>
         <img
           src={FULLBLEED_IMG}
-          alt="Brooklyn home exterior renovated by S.I.S. Construction"
+          alt="Brooklyn home exterior renovated by Strong Innovative Structures"
           loading="lazy"
           className="h-full w-full object-cover"
           draggable={false}
@@ -304,7 +304,7 @@ export function Work() {
             Real photos.
           </h2>
           <p className="reveal max-w-md text-base text-charcoal/65">
-            No stock photos — these are actual S.I.S. jobs on actual homes across Brooklyn and New York City.
+            No stock photos — these are actual Strong Innovative jobs on actual homes across Brooklyn and New York City.
           </p>
         </div>
 
