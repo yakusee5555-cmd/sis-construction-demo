@@ -43,13 +43,7 @@ export default function Hero() {
         <div className="grid items-end gap-8 lg:grid-cols-[1fr_auto]">
           <div>
             <p
-              className="hero-fade text-center text-xs md:text-sm font-bold tracking-[0.5em] text-white lg:text-left"
-              style={{ animationDelay: "1.1s" }}
-            >
-              STRONG INNOVATIVE STRUCTURES INC
-            </p>
-            <p
-              className="hero-fade mt-3 text-center text-sm text-white/85 lg:text-left"
+              className="hero-fade text-center text-sm text-white/85 lg:text-left"
               style={{ animationDelay: "1.15s" }}
             >
               Brick • Concrete • Waterproofing • Masonry • Interior, Exterior &amp; More
