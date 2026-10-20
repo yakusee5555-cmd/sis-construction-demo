@@ -8,8 +8,8 @@ export default function Hero() {
       {/* BACK LAYER — atmosphere + giant wordmark */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,#18261c_0%,#0b100d_70%)]" />
-        <div className="absolute inset-0 flex items-start justify-center px-4 pt-[15vh] md:items-center md:pt-0">
-          <h1 className="text-center font-display font-black text-[#f4efe4] leading-[0.95] tracking-tight select-none text-[clamp(2.2rem,9vw,11rem)] [text-shadow:0_2px_60px_rgba(0,0,0,0.65)]">
+        <div className="absolute inset-0 flex items-start justify-center px-4 pt-[11vh] md:items-center md:pt-0">
+          <h1 className="text-center font-display font-black text-[#f4efe4] leading-[0.95] tracking-tight select-none text-[clamp(2.9rem,15.5vw,11rem)] [text-shadow:0_2px_60px_rgba(0,0,0,0.65)]">
             Strong
             <br />
             Innovative
@@ -23,17 +23,13 @@ export default function Hero() {
           src={HERO_IMG}
           alt="Brownstone masonry work by Strong Innovative Structures in Brooklyn"
           draggable={false}
-          className="h-full w-full object-cover"
-          style={{
-            WebkitMaskImage: "linear-gradient(to bottom, transparent 34%, black 66%)",
-            maskImage: "linear-gradient(to bottom, transparent 34%, black 66%)",
-          }}
+          className="hero-photo-mask h-full w-full object-cover object-[center_22%] md:object-center"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
       </div>
 
       {/* CONTENT */}
-      <div className="relative z-20 flex flex-1 flex-col justify-end px-6 pb-10 pt-[36vh] md:justify-between md:px-12 md:pt-28">
+      <div className="relative z-20 flex flex-1 flex-col justify-end px-6 pb-10 pt-[27vh] md:justify-between md:px-12 md:pt-28">
         <div className="hero-fade hidden justify-end md:flex" style={{ animationDelay: "0.9s" }}>
           <p className="text-right text-[11px] md:text-xs font-bold tracking-[0.35em] text-white/95 leading-loose">
             BRICK
