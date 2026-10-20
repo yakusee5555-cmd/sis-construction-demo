@@ -140,6 +140,26 @@ export function Header() {
 
 /* ---------- reviews (editorial) ---------- */
 export function Reviews() {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [active, setActive] = useState(0);
+  const count = REVIEWS.length;
+
+  const onScroll = () => {
+    const el = trackRef.current;
+    if (!el) return;
+    const max = el.scrollWidth - el.clientWidth;
+    if (max <= 0) return;
+    setActive(Math.round((el.scrollLeft / max) * (count - 1)));
+  };
+
+  const goTo = (i: number) => {
+    const el = trackRef.current;
+    if (!el) return;
+    const child = el.children[i] as HTMLElement | undefined;
+    if (child) child.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+    setActive(i);
+  };
+
   return (
     <section id="reviews" className="bg-forest py-12 md:py-32">
       <div className="mx-auto max-w-7xl px-6 md:px-12">
@@ -163,11 +183,15 @@ export function Reviews() {
             </span>
           </div>
         </div>
-        <div className="mt-8 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4 md:mt-12 md:grid md:snap-none md:grid-cols-2 md:overflow-visible md:pb-0 lg:grid-cols-3">
+        <div
+          ref={trackRef}
+          onScroll={onScroll}
+          className="mt-8 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:mt-12 md:grid md:snap-none md:grid-cols-2 md:overflow-visible md:pb-0 lg:grid-cols-3"
+        >
           {REVIEWS.map((r, i) => (
             <figure
               key={r.name}
-              className="reveal flex min-w-[85%] snap-center flex-col rounded-3xl bg-cream p-6 shadow-lg sm:min-w-[60%] md:min-w-0"
+              className="reveal flex min-w-full snap-center flex-col rounded-3xl bg-cream p-6 shadow-lg md:min-w-0"
               style={{ transitionDelay: `${i * 80}ms` }}
             >
               <div className="text-amber-400">★★★★★</div>
@@ -179,6 +203,26 @@ export function Reviews() {
                 <p className="text-sm text-charcoal/60">{r.town}, NY</p>
               </figcaption>
             </figure>
+          ))}
+        </div>
+
+        {/* Mobile pagination — numbered, tap to jump (one review at a time) */}
+        <div className="mt-2 flex items-center justify-center gap-2 md:hidden">
+          {REVIEWS.map((r, i) => (
+            <button
+              key={r.name}
+              type="button"
+              onClick={() => goTo(i)}
+              aria-label={`Go to review ${i + 1}: ${r.name}`}
+              aria-current={active === i ? "true" : undefined}
+              className={`flex h-10 w-10 items-center justify-center rounded-full font-display text-sm transition-colors ${
+                active === i
+                  ? "bg-cream text-forest"
+                  : "bg-cream/15 text-cream/70 hover:bg-cream/25"
+              }`}
+            >
+              {i + 1}
+            </button>
           ))}
         </div>
 
