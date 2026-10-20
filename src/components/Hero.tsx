@@ -9,7 +9,7 @@ export default function Hero() {
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,#18261c_0%,#0b100d_70%)]" />
         <div className="absolute inset-0 flex items-start justify-center px-4 pt-[11vh] md:items-center md:pt-0">
-          <h1 className="text-center font-display font-black text-[#f4efe4] leading-[0.95] tracking-tight select-none text-[clamp(2.9rem,15.5vw,11rem)] [text-shadow:0_2px_60px_rgba(0,0,0,0.65)]">
+          <h1 className="hero-title text-center font-display font-black text-[#f4efe4] leading-[0.95] tracking-tight select-none text-[clamp(2.9rem,15.5vw,11rem)] [text-shadow:0_2px_60px_rgba(0,0,0,0.65)]">
             Strong
             <br />
             Innovative
@@ -18,7 +18,7 @@ export default function Hero() {
       </div>
 
       {/* FRONT LAYER — static brownstone masonry photo overlapping the wordmark */}
-      <div className="absolute inset-0 z-10 pointer-events-none">
+      <div className="hero-fore absolute inset-0 z-10 pointer-events-none">
         <img
           src={HERO_IMG}
           alt="Brownstone masonry work by Strong Innovative Structures in Brooklyn"
@@ -40,7 +40,7 @@ export default function Hero() {
           </p>
         </div>
 
-        <div className="grid items-end gap-8 lg:grid-cols-[1fr_auto]">
+        <div className="mt-10 grid items-end gap-8 md:mt-0 lg:grid-cols-[1fr_auto]">
           <div>
             <p
               className="hero-fade text-center text-sm text-white/85 lg:text-left"
