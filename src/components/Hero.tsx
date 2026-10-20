@@ -76,7 +76,7 @@ export default function Hero() {
                 href={BUSINESS.phoneHref}
                 className="btn-shine flex min-h-[48px] items-center justify-center rounded-full border border-white/60 px-8 py-4 text-center text-sm font-bold tracking-widest text-white hover:bg-white/10 transition-colors"
               >
-                CALL ME
+                CALL NOW
               </a>
             </div>
           </div>
