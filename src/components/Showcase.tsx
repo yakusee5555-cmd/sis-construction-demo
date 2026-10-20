@@ -352,11 +352,11 @@ export function Work() {
           </p>
         </div>
 
-        <div className="mt-8 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:mt-12 md:grid md:snap-none md:grid-cols-3 md:overflow-visible md:pb-0 lg:grid-cols-4">
+        <div className="mt-8 flex flex-col gap-5 md:mt-12 md:grid md:grid-cols-3 lg:grid-cols-4">
           {WORK_SHOTS.map((s, i) => (
             <figure
               key={s.img + i}
-              className="reveal group relative aspect-[3/4] min-w-full shrink-0 snap-center overflow-hidden rounded-2xl shadow-md md:aspect-[4/3] md:min-w-0 md:shrink"
+              className="reveal group relative aspect-[4/5] w-full overflow-hidden rounded-2xl shadow-md md:aspect-[4/3]"
               style={{ transitionDelay: `${(i % 3) * 90}ms` }}
             >
               <img
