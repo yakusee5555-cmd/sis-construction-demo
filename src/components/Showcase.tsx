@@ -347,9 +347,6 @@ export function Work() {
             <br />
             Real photos.
           </h2>
-          <p className="reveal max-w-md text-base text-charcoal/65">
-            No stock photos — these are actual Strong Innovative jobs on actual homes across Brooklyn and New York City.
-          </p>
         </div>
 
         <div className="mt-8 flex flex-col gap-5 md:mt-12 md:grid md:grid-cols-3 lg:grid-cols-4">
