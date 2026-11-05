@@ -1,0 +1,286 @@
+/* ---- Brooklyn Modern Craft — scoped to the new homepage (.bmc) ---- */
+.bmc {
+  --charcoal: #171c1b;
+  --ivory: #f4efe7;
+  --terra: #ae593b;
+  --terra-deep: #93482e;
+  --sand: #cbb9a3;
+  --brass: #d2a44c;
+  font-family: "Inter", system-ui, sans-serif;
+  background: var(--ivory);
+  color: var(--charcoal);
+}
+
+.bmc-serif {
+  font-family: "Fraunces", Georgia, "Times New Roman", serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.bmc-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  color: var(--terra);
+}
+
+.bmc-btn {
+  display: inline-flex;
+  min-height: 52px;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  padding: 0.9rem 1.75rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease,
+    transform 0.15s ease;
+  cursor: pointer;
+}
+.bmc-btn:active {
+  transform: translateY(1px);
+}
+.bmc-btn-primary {
+  background: var(--terra);
+  color: #fff;
+}
+.bmc-btn-primary:hover {
+  background: var(--terra-deep);
+}
+.bmc-btn-ghost {
+  border: 1.5px solid rgba(23, 28, 27, 0.3);
+  color: var(--charcoal);
+  background: transparent;
+}
+.bmc-btn-ghost:hover {
+  border-color: var(--charcoal);
+  background: rgba(23, 28, 27, 0.05);
+}
+.bmc-btn-ghost-light {
+  border: 1.5px solid rgba(244, 239, 231, 0.45);
+  color: var(--ivory);
+  background: transparent;
+}
+.bmc-btn-ghost-light:hover {
+  background: rgba(244, 239, 231, 0.12);
+}
+.bmc-btn-light {
+  background: var(--ivory);
+  color: var(--charcoal);
+}
+.bmc-btn-light:hover {
+  background: #fff;
+}
+
+.bmc-card {
+  background: #fff;
+  border: 1px solid rgba(23, 28, 27, 0.1);
+  border-radius: 1.25rem;
+}
+
+.bmc-demo-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  border-radius: 9999px;
+  background: rgba(210, 164, 76, 0.16);
+  border: 1px solid rgba(210, 164, 76, 0.55);
+  color: #7a5c17;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.7rem;
+}
+
+.bmc-chip {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  border: 1px solid rgba(23, 28, 27, 0.14);
+  background: #fff;
+  padding: 0.55rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: rgba(23, 28, 27, 0.82);
+}
+
+/* ---- scroll reveal (own observer, not the global .reveal) ---- */
+.bmc-reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.bmc-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .bmc-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* ---- accordion / expand transitions ---- */
+.bmc-expand {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition: grid-template-rows 0.35s ease, opacity 0.3s ease;
+}
+.bmc-expand.open {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+.bmc-expand > div {
+  overflow: hidden;
+}
+
+/* ---- before/after slider ---- */
+.bmc-ba {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.25rem;
+  user-select: none;
+  touch-action: pan-y;
+}
+.bmc-ba img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+.bmc-ba-top {
+  position: absolute;
+  inset: 0;
+}
+.bmc-ba-handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: #fff;
+  box-shadow: 0 0 0 1px rgba(23, 28, 27, 0.25);
+  z-index: 2;
+}
+.bmc-ba-knob {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 9999px;
+  background: var(--terra);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+}
+.bmc-ba-tag {
+  position: absolute;
+  top: 0.75rem;
+  z-index: 2;
+  border-radius: 9999px;
+  padding: 0.3rem 0.8rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  background: rgba(23, 28, 27, 0.75);
+  color: var(--ivory);
+}
+
+/* ---- modal ---- */
+@keyframes bmc-modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+.bmc-modal-card {
+  animation: bmc-modal-in 0.3s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes bmc-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.bmc-fade-in {
+  animation: bmc-fade-in 0.25s ease both;
+}
+
+.bmc-input {
+  width: 100%;
+  border-radius: 0.75rem;
+  border: 1.5px solid rgba(23, 28, 27, 0.18);
+  background: #fff;
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  color: var(--charcoal);
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.bmc-input:focus {
+  border-color: var(--terra);
+  box-shadow: 0 0 0 3px rgba(174, 89, 59, 0.18);
+}
+.bmc-input[aria-invalid="true"] {
+  border-color: #b3261e;
+}
+
+/* ---- focus visibility ---- */
+.bmc a:focus-visible,
+.bmc button:focus-visible,
+.bmc input:focus-visible,
+.bmc select:focus-visible,
+.bmc textarea:focus-visible,
+.bmc [tabindex]:focus-visible {
+  outline: 3px solid rgba(210, 164, 76, 0.9);
+  outline-offset: 2px;
+}
+
+/* ---- horizontal review scroller ---- */
+.bmc-scroll-row {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding-bottom: 0.25rem;
+}
+.bmc-scroll-row::-webkit-scrollbar {
+  display: none;
+}
+.bmc-scroll-row > * {
+  scroll-snap-align: start;
+  flex: 0 0 86%;
+}
+@media (min-width: 768px) {
+  .bmc-scroll-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    overflow: visible;
+  }
+  .bmc-scroll-row > * {
+    flex: none;
+  }
+}

@@ -1,53 +1,68 @@
-import { Reviews } from "../components/Sections";
-import { BeforeAfter, Work } from "../components/Showcase";
-import { CtaBand, Faq, RouteFX } from "../components/PageBits";
+import { useCallback, useState } from "react";
+import { RouteFX } from "../components/PageBits";
 import {
-  HomeHero,
-  ServicesGrid,
-  OwnerStory,
-  WhyChooseUs,
-  ProcessSteps,
-  ServiceAreasStrip,
-  BlogPreview,
-} from "../components/HomeSections";
-import { HOME_FAQS } from "../data";
+  AreasSection,
+  BlogSection,
+  BmcFooter,
+  BmcHeader,
+  EstimateModal,
+  FaqSection,
+  FinalCta,
+  GallerySection,
+  GoogleReviews,
+  HeroSection,
+  MobileBar,
+  OwnerSection,
+  ProcessSection,
+  ServicesSection,
+  WhySection,
+  YelpReviews,
+  useBmcReveal,
+} from "../components/HomeNew";
+import "./HomeNew.css";
 
 export default function Home() {
+  const [modal, setModal] = useState<{ open: boolean; service: string }>({
+    open: false,
+    service: "",
+  });
+  const openEstimate = useCallback((service?: string) => {
+    setModal({ open: true, service: service ?? "" });
+  }, []);
+  const closeEstimate = useCallback(() => {
+    setModal((m) => ({ ...m, open: false }));
+  }, []);
+  const revealRef = useBmcReveal();
+
   return (
-    <>
+    <div ref={revealRef} className="bmc pb-[72px] md:pb-0">
       <RouteFX
-        title="Strong Innovative Structures INC | General Contractor in Brooklyn, NY"
-        description="Strong Innovative Structures INC — general contractor in Brooklyn, NY. Masonry, concrete, roofing, waterproofing, kitchen & bathroom remodeling, construction and home additions. Free estimates."
+        title="Strong Innovative Structures Inc. | General Contractor in Brooklyn, NY"
+        description="Strong Innovative Structures Inc. — general contractor in Brooklyn, NY. Full interior and exterior home renovations: concrete, masonry, roofing, bathroom and kitchen remodeling, and home additions. Free estimates."
       />
-      <HomeHero />
-      <Reviews />
-      <ServicesGrid />
-      <OwnerStory />
-      <WhyChooseUs />
-      <div id="work">
-        <Work />
-        <BeforeAfter />
-      </div>
-      <ProcessSteps />
-      <ServiceAreasStrip />
-      <BlogPreview />
-      <section className="bg-white py-12 md:py-24">
-        <div className="mx-auto max-w-4xl px-6 md:px-12">
-          <p className="reveal text-[11px] font-bold uppercase tracking-[0.3em] text-forest">
-            FAQ
-          </p>
-          <h2 className="reveal mb-8 mt-3 font-display text-3xl uppercase leading-[1.05] text-charcoal md:mb-12 md:text-6xl md:leading-[1.02]">
-            Questions Brooklyn
-            <br />
-            homeowners often ask us
-          </h2>
-          <Faq items={HOME_FAQS} />
-        </div>
-      </section>
-      <CtaBand
-        title="Get your free estimate from a Brooklyn general contractor"
-        sub="Tell us what's going on. Usman will come look at it, give you a clear written price, and tell you what needs fixing now and what can wait. No pressure, no hidden fees."
+      <BmcHeader onEstimate={() => openEstimate()} />
+      <main>
+        <HeroSection onEstimate={openEstimate} />
+        <GoogleReviews />
+        <ServicesSection onEstimate={openEstimate} />
+        <OwnerSection />
+        <WhySection onEstimate={openEstimate} />
+        <GallerySection onEstimate={openEstimate} />
+        <ProcessSection onEstimate={openEstimate} />
+        <AreasSection onEstimate={openEstimate} />
+        <YelpReviews />
+        <BlogSection />
+        <FaqSection />
+        <FinalCta onEstimate={openEstimate} />
+      </main>
+      <BmcFooter />
+      <EstimateModal
+        open={modal.open}
+        service={modal.service}
+        onClose={closeEstimate}
+        onServiceChange={(s) => setModal((m) => ({ ...m, service: s }))}
       />
-    </>
+      <MobileBar onEstimate={() => openEstimate()} hidden={modal.open} />
+    </div>
   );
 }
