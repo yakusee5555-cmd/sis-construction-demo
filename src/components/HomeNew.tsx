@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import { BEFORE_AFTER } from "../data";
 
 /* ================= demo constants (per spec — placeholders, flagged) ================= */
 export const DEMO_PHONE = "999 999 9999";
@@ -195,8 +196,8 @@ export function HeroSection({ onEstimate }: { onEstimate: () => void }) {
   return (
     <section id="home" className="relative overflow-hidden bg-[#171C1B]">
       <img
-        src="/img/bmc-hero.webp"
-        alt="A row of historic brownstone townhouses with stoops on a tree-lined Brooklyn street"
+        src="/img/house-sunroom.jpg"
+        alt="A Brooklyn home with a newly built brick extension and sunroom on a residential street"
         className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-45"
       />
       <div className="absolute inset-0 bg-gradient-to-r from-[#171C1B]/90 via-[#171C1B]/65 to-[#171C1B]/30" />
@@ -642,23 +643,15 @@ export function WhySection({ onEstimate }: { onEstimate: () => void }) {
   );
 }
 
-/* ================= gallery (before / after) ================= */
-const GALLERY_PROJECTS = [
-  {
-    name: "Stoop & facade restoration",
-    before: "/img/bmc-before-stoop.webp",
-    after: "/img/bmc-after-stoop.webp",
-    beforeAlt: "Weathered brownstone stoop and brick facade before restoration",
-    afterAlt: "Restored brownstone stoop and repointed brick facade after restoration",
-  },
-  {
-    name: "Bathroom remodel",
-    before: "/img/bmc-before-bath.webp",
-    after: "/img/bmc-after-bath.webp",
-    beforeAlt: "Old worn bathroom with cast-iron tub before remodeling",
-    afterAlt: "Newly remodeled bathroom with walk-in shower after remodeling",
-  },
-];
+/* ================= gallery (before / after) — REAL project photos ================= */
+const GALLERY_PROJECTS = BEFORE_AFTER.map((p) => ({
+  name: p.title,
+  desc: p.desc,
+  before: p.before,
+  after: p.after,
+  beforeAlt: `${p.title} — before`,
+  afterAlt: `${p.title} — after`,
+}));
 
 function BeforeAfter({ p }: { p: (typeof GALLERY_PROJECTS)[number] }) {
   const [pos, setPos] = useState(50);
@@ -745,9 +738,7 @@ export function GallerySection({ onEstimate }: { onEstimate: () => void }) {
         </div>
         <div className="bmc-reveal">
           <BeforeAfter key={p.name} p={p} />
-          <p className="mt-4">
-            <DemoTag>Illustrative demo image — replace with actual project photo</DemoTag>
-          </p>
+          <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-[#171C1B]/70">{p.desc}</p>
         </div>
         <Ctas onEstimate={onEstimate} />
       </div>
@@ -846,17 +837,17 @@ export function YelpReviews() {
 /* ================= blog ================= */
 const BLOG_POSTS = [
   {
-    img: "/img/bmc-blog-contractor.webp",
+    img: "/img/masonry.jpg",
     title: "How to Choose a General Contractor in Brooklyn: 7 Questions to Ask",
     excerpt: "Licenses, insurance, permits and written estimates. Here's what to check before you hire anyone for your home.",
   },
   {
-    img: "/img/bmc-blog-roof.webp",
+    img: "/img/roofing.jpg",
     title: "How Much Does Roof Replacement Cost in Brooklyn?",
     excerpt: "Flat roofs, row houses and brownstones all price differently. See what changes the cost and how to compare estimates.",
   },
   {
-    img: "/img/bmc-blog-permit.webp",
+    img: "/img/construction-site.jpg",
     title: "Do You Need a Permit for Home Renovations in Brooklyn?",
     excerpt: "Some jobs need a DOB permit and some don't. Find out which is which before the work starts.",
   },
